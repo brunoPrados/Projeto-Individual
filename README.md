@@ -1,2 +1,2 @@
 # Projeto-Individual
-Projeto Individual Bruno Prado
+Nesse projeto farei um site informativo sobre Hobbies, principalmente hobbies esportivos.
