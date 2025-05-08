@@ -235,6 +235,10 @@ body {
   display: none
 }
 
+.cadastro {
+  font-style: none;
+}
+
 /* FORMULARIO */
 
 .alerta_erro{
