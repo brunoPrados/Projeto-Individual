@@ -22,10 +22,17 @@ body {
   justify-content: space-between;
 }
 
-.titulo {
+.titulo a {
   color: white;
   font-size: 24px;
+  text-decoration: none;
   margin: 0;
+}
+
+.titulo li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar {
@@ -40,11 +47,11 @@ ul {
   display: flex;
 }
 
-li {
+.navbar li {
   margin: 0 5px;
 }
 
-li a {
+.navbar li a {
   display: block;
   color: white;
   text-align: center;
@@ -53,7 +60,7 @@ li a {
   font-size: 16px;
 }
 
-li a:hover {
+.navbar li a:hover {
   background-color: #111;
 }
 
@@ -120,7 +127,7 @@ li a:hover {
 
 .footer {
   height: 60px;
-  background-color: #333;
+  background-color: #3c3c3c;
   color: white;
   display: flex;
   align-items: center;
@@ -128,7 +135,6 @@ li a:hover {
 }
 
 .footer h4 {
-  margin: 0;
   font-weight: normal;
   font-size: 14px;
 }
@@ -140,7 +146,7 @@ li a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 70px; 
+  min-height: 70px;
 }
 
 .login .container {
