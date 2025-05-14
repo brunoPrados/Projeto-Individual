@@ -3,6 +3,8 @@ body {
   padding: 0;
   background-color: #f2f2f2;
   font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .header {
@@ -131,14 +133,14 @@ li a:hover {
   font-size: 14px;
 }
 
-/* Estilo específico para a página de login */
+
 .login {
   background-color: #f2f2f2;
   padding: 60px 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 70px; /* Altura estimada equivalente a 100vh - 140px */
+  min-height: 70px; 
 }
 
 .login .container {
