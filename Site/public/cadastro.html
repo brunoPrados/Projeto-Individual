@@ -57,12 +57,12 @@
                          Assim que inserir vá para o script abaixo.
                      -->
           <div class="campo">
-            <span>Código de ativação:</span>
-            <input id="codigo_input" type="text" placeholder="Insira aqui seu código" />
-          </div>
-          <div class="campo">
             <span>Nome:</span>
             <input id="nome_input" type="text" placeholder="Seu nome" />
+          </div>
+          <div class="campo">
+            <span>Sobrenome:</span>
+            <input id="sobrenome_input" type="text" placeholder="Seu sobrenome" />
           </div>
           <div class="campo">
             <span>E-mail:</span>
@@ -73,12 +73,33 @@
             <input id="cpf_input" type="text" placeholder="Seu CPF" />
           </div>
           <div class="campo">
+            <span>Data de Nascimento:</span>
+            <input id="data_input" type="date"/>
+          </div>
+          <div class="campo">
             <span>Senha:</span>
             <input id="senha_input" type="password" placeholder="******" />
           </div>
           <div class="campo">
             <span>Confirmação da Senha:</span>
             <input id="confirmacao_senha_input" type="password" placeholder="******" />
+          </div>
+          <div class="campo">
+            <span>Hobbie Favorito:</span>
+            <select id="hobbie_input">
+              <option value="#">Escolha aqui</option>
+              <option value="beach">Beach Tennis</option>
+              <option value="cubo">Cubo Mágico</option>
+              <option value="malabarismo">Malabarismo</option>
+              <option value="xadrez">Xadrez</option>
+              <option value="musculacao">Musculação</option>
+              <option value="serie">Séries/Filmes</option>
+              <option value="boxe">Boxe</option>
+              <option value="magica">Mágica</option>
+              <option value="skate">Skate</option>
+              <option value="escalada">Escalada</option>
+              <option value="outro">Outro</option>
+            </select>
           </div>
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
@@ -95,7 +116,6 @@
   <div class="footer">
     <div class="container">
       <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
-      <span class="version">v1.0.0</span>
     </div>
   </div>
   <!--footer fim-->
@@ -114,12 +134,13 @@
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
+    var sobrenomeVar = sobrenome_value.value;
     var emailVar = email_input.value;
     var cpfVar = cpf_input.value;
+    var dataVar = data_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var codigoVar = codigo_input.value;
-    var idEmpresaVincular
+    var hobbieVar = hobbie_input.value;
 
     // Verificando se há algum campo em branco
     if (
