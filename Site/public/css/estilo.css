@@ -7,6 +7,8 @@ body {
   line-height: 1.5;
 }
 
+/* INDEX */
+
 .header {
   height: 80px;
   background-color: #333;
@@ -139,6 +141,7 @@ ul {
   font-size: 14px;
 }
 
+/* LOGIN */
 
 .login {
   background-color: #f2f2f2;
@@ -252,3 +255,30 @@ ul {
   color: red;
   font-size: 14px;
 }
+
+/* CADASTRO */
+.card-cadastro {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.card-cadastro h2 {
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.card-cadastro .campo select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #333;
+}
+
