@@ -1,5 +1,4 @@
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
 
 function autenticar(req, res) {
     var email = req.body.emailServer;
@@ -24,11 +23,12 @@ function autenticar(req, res) {
                             .then((resultadoAquarios) => {
                                 if (resultadoAquarios.length > 0) {
                                     res.json({
-                                        id: resultadoAutenticar[0].id,
+                                        idCliente: resultadoAutenticar[0].idCliente,
                                         email: resultadoAutenticar[0].email,
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha,
-                                        aquarios: resultadoAquarios
+                                        hobbie: resultadoAutenticar[0].hobbie
+
                                     });
                                 } else {
                                     res.status(204).json({ aquarios: [] });
@@ -80,7 +80,7 @@ function cadastrar(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, sobrenome, email, cpf, dtNascimento, senha, hobbie)
+        usuarioModel.cadastrar(nome, sobrenome, dtNascimento, email, cpf, hobbie, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);
