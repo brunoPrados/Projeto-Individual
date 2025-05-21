@@ -32,7 +32,7 @@
 
     <div class="janela">
         <div class="header-left">
-            <h1>AquaTech</h1>
+            <h1>Hobbies & Bem-Estar</h1>
 
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
@@ -40,13 +40,13 @@
 
             <div class="btn-nav-white">
                 <a href="./cards.html">
-                    <h3>Aquários</h3>
+                    <h3>Geral</h3>
                 </a>
             </div>
 
             <div class="btn-nav">
 
-                <h3>Gráficos</h3>
+                <h3>Seus Resultados</h3>
 
             </div>
 
@@ -84,7 +84,6 @@
 
     let proximaAtualizacao;
 
-    window.onload = exibirAquariosDoUsuario();
 
     function exibirAquariosDoUsuario() {
         var aquarios = JSON.parse(sessionStorage.AQUARIOS);

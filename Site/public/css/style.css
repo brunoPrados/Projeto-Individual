@@ -72,3 +72,135 @@ button {
 .text-new-gray {
     color: var(--new-gray);
 }
+
+/* Estilização do layout da página do Quiz */
+
+.header {
+    background-color: var(--primary-brand-color);
+    padding: 16px;
+    color: var(--new-white);
+}
+
+.header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.header .titulo {
+    font-size: 1.5rem;
+    list-style: none;
+    margin: 0;
+}
+
+.header .titulo a {
+    text-decoration: none;
+    color: var(--new-white);
+}
+
+.navbar {
+    list-style: none;
+    display: flex;
+    gap: 16px;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar li a {
+    text-decoration: none;
+    color: var(--new-white);
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.navbar li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar .agora a {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Botões */
+
+button {
+    padding: 8px 16px;
+    margin: 4px 0;
+    border: none;
+    background-color: var(--primary-brand-color);
+    color: var(--new-white);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:disabled {
+    background-color: var(--new-gray);
+    cursor: not-allowed;
+}
+
+button:hover:enabled {
+    background-color: var(--secondary-brand-color);
+}
+
+/* Container principal */
+
+#pontuacaoEJogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin: 32px auto;
+    max-width: 600px;
+}
+
+/* Blocos de pontuação e jogo */
+
+#pontuacao,
+#jogo {
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    background-color: #fff;
+}
+
+#pontuacaoFinalJogo {
+    border-top: 2px dashed var(--new-gray);
+    margin-top: 8px;
+    padding-top: 8px;
+}
+
+/* Alternativas */
+
+.option {
+    display: inline-block;
+    padding: 8px;
+    margin: 4px 0;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    margin-right: 8px;
+}
+
+/* Responsividade */
+
+@media (max-width: 600px) {
+    .header .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    #pontuacaoEJogo {
+        width: 90%;
+    }
+}
