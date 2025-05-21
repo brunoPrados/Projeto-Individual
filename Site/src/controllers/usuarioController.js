@@ -52,12 +52,15 @@ function autenticar(req, res) {
 }
 
 function cadastrar(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html  
+
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var cpf = req.body.cpfServer;
     var senha = req.body.senhaServer;
-    var fkEmpresa = req.body.idEmpresaVincularServer;
+    var sobrenome = req.body.sobrenomeServer;
+    var dtNascimento = req.body.dataServer;
+    var hobbie = req.body.hobbieServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -68,12 +71,16 @@ function cadastrar(req, res) {
         res.status(400).send("Seu cpf está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    } else if (fkEmpresa == undefined) {
-        res.status(400).send("Sua empresa a vincular está undefined!");
+    } else if (sobrenome == undefined) {
+        res.status(400).send("Seu sobrenome está undefined!");
+    } else if (dtNascimento == undefined) {
+        res.status(400).send("Sua data de nascimento está undefined!");
+    } else if (hobbie == undefined) {
+        res.status(400).send("Seu hobbie preferido está undefined!");
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, cpf, senha, fkEmpresa)
+        usuarioModel.cadastrar(nome, sobrenome, email, cpf, dtNascimento, senha, hobbie)
             .then(
                 function (resultado) {
                     res.json(resultado);

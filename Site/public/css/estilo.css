@@ -70,6 +70,8 @@ ul {
   background-color: #396348;
 }
 
+/* NAVBAR */
+
 .banner {
   height: 400px;
   background-image: url(../assets/background.jpg);
@@ -162,6 +164,7 @@ ul {
   box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.15);
 }
 
+/* FOOTER */
 
 .footer {
   height: 60px;
