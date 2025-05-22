@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
-<body onload="listar()">
+<body>
   <!--header inicio-->
   <div class="header">
     <div class="container">
@@ -57,20 +57,8 @@
             <input id="nome_input" type="text" placeholder="Seu nome" />
           </div>
           <div class="campo">
-            <span>Sobrenome:</span>
-            <input id="sobrenome_input" type="text" placeholder="Seu sobrenome" />
-          </div>
-          <div class="campo">
             <span>E-mail:</span>
             <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
-          </div>
-          <div class="campo">
-            <span>CPF:</span>
-            <input id="cpf_input" type="text" placeholder="Seu CPF" />
-          </div>
-          <div class="campo">
-            <span>Data de Nascimento:</span>
-            <input id="data_input" type="date"/>
           </div>
           <div class="campo">
             <span>Senha:</span>
@@ -84,16 +72,16 @@
             <span>Hobbie Favorito:</span>
             <select id="hobbie_input">
               <option value="#">Escolha aqui</option>
-              <option value="beach">Beach Tennis</option>
-              <option value="cubo">Cubo Mágico</option>
-              <option value="malabarismo">Malabarismo</option>
-              <option value="xadrez">Xadrez</option>
-              <option value="musculacao">Musculação</option>
-              <option value="serie">Séries/Filmes</option>
-              <option value="boxe">Boxe</option>
-              <option value="magica">Mágica</option>
-              <option value="skate">Skate</option>
-              <option value="escalada">Escalada</option>
+              <option value="Beach">Beach Tennis</option>
+              <option value="Cubo">Cubo Mágico</option>
+              <option value="Malabarismo">Malabarismo</option>
+              <option value="Xadrez">Xadrez</option>
+              <option value="Musculacao">Musculação</option>
+              <option value="Serie/Filmes">Séries/Filmes</option>
+              <option value="Boxe">Boxe</option>
+              <option value="Magica">Mágica</option>
+              <option value="Skate">Skate</option>
+              <option value="Escalada">Escalada</option>
               <option value="outro">Outro</option>
             </select>
           </div>
@@ -123,15 +111,13 @@
 
 
   function cadastrar() {
+    
     // aguardar();
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
-    var sobrenomeVar = sobrenome_value.value;
     var emailVar = email_input.value;
-    var cpfVar = cpf_input.value;
-    var dataVar = data_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
     var hobbieVar = hobbie_input.value;
@@ -140,11 +126,8 @@
     if (
       nomeVar == "" ||
       emailVar == "" ||
-      cpfVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
-      sobrenomeVar == "" ||
-      dataVar == "" ||
       hobbieVar == ""
     ) {
       cardErro.style.display = "block";
@@ -208,17 +191,6 @@
     } else {
       setTimeout(sumirMensagem, 5000);
     }
-    if(cpfVar.length != 11){
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para CPF errado)";
-
-      finalizarAguardar();
-      return false;
-    } else {
-      setTimeout(sumirMensagem, 5000);
-    }
-
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
       method: "POST",
@@ -230,10 +202,7 @@
         // Agora vá para o arquivo routes/usuario.js
 
         nomeServer: nomeVar,
-        sobrenomeServer: sobrenomeVar,
         emailServer: emailVar,
-        cpfServer: cpfVar,
-        dataServer: dataVar,
         senhaServer: senhaVar,
         hobbieServer: hobbieVar,
       }),
@@ -268,4 +237,9 @@
   function sumirMensagem() {
     cardErro.style.display = "none";
   }
+
+  function finalizarAguardar() {
+  div_aguardar.style.display = "none";
+}
+
 </script>

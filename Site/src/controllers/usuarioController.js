@@ -19,21 +19,15 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
 
-                        aquarioModel.buscarAquariosPorEmpresa(resultadoAutenticar[0].empresaId)
-                            .then((resultadoAquarios) => {
-                                if (resultadoAquarios.length > 0) {
-                                    res.json({
-                                        idCliente: resultadoAutenticar[0].idCliente,
-                                        email: resultadoAutenticar[0].email,
-                                        nome: resultadoAutenticar[0].nome,
-                                        senha: resultadoAutenticar[0].senha,
-                                        hobbie: resultadoAutenticar[0].hobbie
+                         res.json({
+                                idCliente: resultadoAutenticar[0].idCliente,
+                                email: resultadoAutenticar[0].email,
+                                nome: resultadoAutenticar[0].nome,
+                                senha: resultadoAutenticar[0].senha,
+                                hobbie: resultadoAutenticar[0].hobbie
 
-                                    });
-                                } else {
-                                    res.status(204).json({ aquarios: [] });
-                                }
-                            })
+                            });
+
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
@@ -41,12 +35,12 @@ function autenticar(req, res) {
                     }
                 }
             ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
+                        function (erro) {
+                            console.log(erro);
+                            console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                            res.status(500).json(erro.sqlMessage);
+                        }
+                    );
     }
 
 }
@@ -56,10 +50,7 @@ function cadastrar(req, res) {
 
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
-    var cpf = req.body.cpfServer;
     var senha = req.body.senhaServer;
-    var sobrenome = req.body.sobrenomeServer;
-    var dtNascimento = req.body.dataServer;
     var hobbie = req.body.hobbieServer;
 
     // Faça as validações dos valores
@@ -67,20 +58,14 @@ function cadastrar(req, res) {
         res.status(400).send("Seu nome está undefined!");
     } else if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
-    } else if (cpf == undefined) {
-        res.status(400).send("Seu cpf está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    } else if (sobrenome == undefined) {
-        res.status(400).send("Seu sobrenome está undefined!");
-    } else if (dtNascimento == undefined) {
-        res.status(400).send("Sua data de nascimento está undefined!");
     } else if (hobbie == undefined) {
         res.status(400).send("Seu hobbie preferido está undefined!");
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, sobrenome, dtNascimento, email, cpf, hobbie, senha)
+        usuarioModel.cadastrar(nome, email, hobbie, senha)
             .then(
                 function (resultado) {
                     res.json(resultado);
