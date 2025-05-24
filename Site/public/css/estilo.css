@@ -180,6 +180,28 @@ ul {
   font-size: 14px;
 }
 
+/* SOBRE MIM */
+    .simulador {
+      padding: 40px 20px;
+    }
+
+    .simulador .container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .simulador h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #565a5f;
+    }
+
+    .simulador p {
+      margin-bottom: 16px;
+      line-height: 1.6;
+      text-align: justify;
+    }
+
 /* LOGIN */
 
 .login {
