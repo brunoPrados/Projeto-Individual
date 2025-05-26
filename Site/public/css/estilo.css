@@ -99,6 +99,39 @@ ul {
   font-weight: bold;
 }
 
+/* APRESENTAÇÃO */
+
+.apresentacao {
+  background-color: #ffffff;
+  padding: 40px 0px;
+  border-top: 2px solid #ddd;
+  border-bottom: 2px solid #ddd;
+}
+
+.apresentacao .container {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.apresentacao h2 {
+  font-size: 26px;
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #18cf5b;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.apresentacao p {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 16px;
+  text-align: justify;
+  line-height: 1.6;
+}
+
+
 /* Boxes Dentro do INDEX */
 
 .social {
@@ -181,26 +214,37 @@ ul {
 }
 
 /* SOBRE MIM */
-    .simulador {
-      padding: 40px 20px;
-    }
+.simulador {
+  background-color: #ffffff;
+  padding: 40px 0;
+  border-top: 2px solid #ddd;
+  border-bottom: 2px solid #ddd;
+}
 
-    .simulador .container {
-      max-width: 800px;
-      margin: auto;
-    }
+.simulador .container {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
-    .simulador h2 {
-      font-size: 28px;
-      margin-bottom: 20px;
-      color: #565a5f;
-    }
+.simulador h2 {
+  font-size: 26px;
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #18cf5b;
+  display: inline-block;
+  padding-bottom: 5px;
+  margin-top: 40px;
+}
 
-    .simulador p {
-      margin-bottom: 16px;
-      line-height: 1.6;
-      text-align: justify;
-    }
+.simulador p {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 16px;
+  text-align: justify;
+  line-height: 1.6;
+}
+
 
 /* LOGIN */
 
@@ -348,74 +392,73 @@ ul {
 /* The 4-point grid system: https://medium.com/@sainzkike/controlling-spacing-in-design-systems-multiple-spacing-9bf1afec87f */
 
 :root {
-    --primary-brand-color: #ED145B;
-    --secondary-brand-color: #0762C8;
-    --success: #198754;
-    --success-dark: #095c36;
-    --success-light: #9dd3ba;
-    --warning: #ffc107;
-    --warning-dark: #705400;
-    --warning-light: #fdebb3;
-    --danger: #dc3545;
-    --danger-dark: #990c19;
-    --danger-light: #f0c1c6;
-    --new-gray: #CCCCCC;
-    --new-black: #212427;
-    --new-white: #E8E8E8;
+  --primary-brand-color: #ED145B;
+  --secondary-brand-color: #0762C8;
+  --success: #198754;
+  --success-dark: #095c36;
+  --success-light: #9dd3ba;
+  --warning: #ffc107;
+  --warning-dark: #705400;
+  --warning-light: #fdebb3;
+  --danger: #dc3545;
+  --danger-dark: #990c19;
+  --danger-light: #f0c1c6;
+  --new-gray: #CCCCCC;
+  --new-black: #212427;
+  --new-white: #E8E8E8;
 }
 
 body {
-    color: var(--new-black);
-    background-color: var(--new-white);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: var(--new-black);
+  background-color: var(--new-white);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 button {
-    font-family: monospace;
-    font-weight: bold;
+  font-family: monospace;
+  font-weight: bold;
 }
 
 .flex-colunar {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .width-fit-content {
-    width: fit-content;
+  width: fit-content;
 }
 
 .border-primary {
-    border: 3px solid var(--primary-brand-color);
+  border: 3px solid var(--primary-brand-color);
 }
 
 .border-secondary {
-    border: 3px solid var(--secondary-brand-color);
+  border: 3px solid var(--secondary-brand-color);
 }
 
 .padding-8 {
-    padding: 8px;
+  padding: 8px;
 }
 
 .text-bold {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .text-success-with-bg {
-    color: var(--success-dark);
-    background-color: var(--success-light);
+  color: var(--success-dark);
+  background-color: var(--success-light);
 }
 
 .text-warning-with-bg {
-    color: var(--warning-dark);
-    background-color: var(--warning-light);
+  color: var(--warning-dark);
+  background-color: var(--warning-light);
 }
 
 .text-danger-with-bg {
-    color: var(--danger-dark);
-    background-color: var(--danger-light);
+  color: var(--danger-dark);
+  background-color: var(--danger-light);
 }
 
 .text-new-gray {
-    color: var(--new-gray);
+  color: var(--new-gray);
 }
-
