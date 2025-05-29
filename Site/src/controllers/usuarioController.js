@@ -52,6 +52,7 @@ function cadastrar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
     var hobbie = req.body.hobbieServer;
+    
 
     // Faça as validações dos valores
     if (nome == undefined) {

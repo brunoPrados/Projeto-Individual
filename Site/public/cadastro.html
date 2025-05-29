@@ -67,7 +67,7 @@
           </div>
           <div class="campo">
             <span>Hobbie Favorito:</span>
-            <select id="hobbie_input">
+            <select id="hobbie_input" onchange="Outro()">
               <option value="#">Escolha aqui</option>
               <option value="Beach">Beach Tennis</option>
               <option value="Cubo">Cubo Mágico</option>
@@ -82,6 +82,7 @@
               <option value="outro">Outro</option>
             </select>
           </div>
+          <div id="div_outro"></div>
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
         <div id="div_aguardar" class="loading-div">
@@ -106,6 +107,19 @@
 
 <script>
 
+  function Outro(){
+    let hobbieVar = hobbie_input.value;
+    if(hobbieVar == 'outro'){
+      div_outro.innerHTML = `
+      <div class="campo">
+            <span>Escreva Seu Hobbie:</span>
+            <input type="text" id="hobbieoutro_input" placeholder="Seu Hobbie">
+          </div>
+      `
+    } else{
+      div_outro.innerHTML = ``;
+    }
+  }
 
   function cadastrar() {
     
@@ -118,6 +132,10 @@
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
     var hobbieVar = hobbie_input.value;
+    var outrohobbieVar = hobbieoutro_input.value;
+
+    // Verificando Hobbie
+    if(hobbieVar == 'outro') hobbieVar = outrohobbieVar;
 
     // Verificando se há algum campo em branco
     if (
@@ -202,6 +220,7 @@
         emailServer: emailVar,
         senhaServer: senhaVar,
         hobbieServer: hobbieVar,
+        outrohobbieServer: outrohobbieVar,
       }),
     })
       .then(function (resposta) {
