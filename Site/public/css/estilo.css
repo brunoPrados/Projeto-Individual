@@ -70,6 +70,10 @@ ul {
   background-color: #396348;
 }
 
+.navbar .agora a:hover {
+  background-color: #396348;
+}
+
 /* NAVBAR */
 
 .banner {
@@ -129,6 +133,14 @@ ul {
   margin-bottom: 16px;
   text-align: justify;
   line-height: 1.6;
+}
+
+.apresentacao p a{
+  color: #444;
+}
+
+.apresentacao strong{
+  color: #333;
 }
 
 
