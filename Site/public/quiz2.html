@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz - Qual seu hobbie?</title>
+    <link rel="stylesheet" href="css/dashboards.css" />
+    <script src="./js/sessao.js"></script>
+</head>
+
+<body>
+        <div class="header">
+        <div class="container">
+            <h1 class="titulo">
+                <li>
+                    <a href="dashboard.html">Hobbies & Bem-Estar</a>
+                </li>
+            </h1>
+            <ul class="navbar">
+                <li>
+                    <a href="dashboard.html">Meus Resultados</a>
+                </li>
+                <li class="agora">
+                    <a href="quiz2.html">Quiz Personalidade</a>
+                </li>
+                <li>
+                    <a href="quiz1.html">Quiz Conhecimento</a>
+                </li>
+            </ul>
+        </div>
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
+    </div>
+    <div class="quiz-container">
+        <h1>Qual é o seu hobbie ideal?</h1>
+
+        <form id="quizForm">
+            <div class="question">
+                <p>1. O que você prefere fazer em um sábado?</p>
+                <label><input type="radio" name="q1" value="esportes"> Se exercitar</label>
+                <label><input type="radio" name="q1" value="mentais"> Resolver um quebra-cabeça</label>
+                <label><input type="radio" name="q1" value="artes"> Ir em um Circo</label>
+                <label><input type="radio" name="q1" value="lazer"> Descansar em casa</label>
+            </div>
+
+            <div class="question">
+                <p>2. Qual dessas atividades você mais tem interesse?</p>
+                <label><input type="radio" name="q2" value="lazer"> Ver um filme no cinema</label>
+                <label><input type="radio" name="q2" value="mentais"> Jogar xadrez</label>
+                <label><input type="radio" name="q2" value="artes"> Pintar</label>
+                <label><input type="radio" name="q2" value="esportes"> Ir à academia</label>
+            </div>
+
+            <div class="question">
+            <p>3. O que mais te motiva a começar uma nova atividade?</p>
+            <label><input type="radio" name="q3" value="esportes"> Melhorar minha saúde física</label>
+            <label><input type="radio" name="q3" value="mentais"> Desafiar meu raciocínio</label>
+            <label><input type="radio" name="q3" value="artes"> Expressar minha criatividade</label>
+            <label><input type="radio" name="q3" value="lazer"> Relaxar e me divertir</label>
+            </div>
+
+            <div class="question">
+                <p>4. Como você gosta de se expressar?</p>
+                <label><input type="radio" name="q4" value="artes"> Desenhando, cantando ou atuando</label>
+                <label><input type="radio" name="q4" value="mentais"> Com lógica e argumentação</label>
+                <label><input type="radio" name="q4" value="esportes"> Com o corpo em movimento</label>
+                <label><input type="radio" name="q4" value="lazer"> Compartilhando nas redes sociais</label>
+            </div>
+
+            <div class="question">
+                <p>5. Qual dessas opções seria um passatempo ideal para você?</p>
+                <label><input type="radio" name="q5" value="mentais"> Resolver desafio</label>
+                <label><input type="radio" name="q5" value="lazer"> Ver filmes em casa</label>
+                <label><input type="radio" name="q5" value="artes"> Tocar instrumentos</label>
+                <label><input type="radio" name="q5" value="esportes"> Correr no parque</label>
+            </div>
+
+            <button type="button" onclick="calcularResultado()">Descobrir meu hobbie</button>
+        </form>
+
+        <div id="resultado"></div>
+    </div>
+</body>
+<script>
+  function calcularResultado() {
+    // Índices: 0 = esportes, 1 = mentais, 2 = artes, 3 = lazer
+    let pontuacoes = [0, 0, 0, 0];
+
+    // Mapeia valores para índices
+    const categorias = ["esportes", "mentais", "artes", "lazer"];
+
+    // Total de perguntas
+    const totalPerguntas = 5;
+
+    // Laço para cada pergunta
+    for (let i = 1; i <= totalPerguntas; i++) {
+      const respostaSelecionada = document.querySelector(`input[name="q${i}"]:checked`);
+      if (respostaSelecionada) {
+        const valor = respostaSelecionada.value;
+        const indice = categorias.indexOf(valor);
+        if (indice !== -1) {
+          pontuacoes[indice]++;
+        }
+      }
+    }
+
+    // Validação no vetor pontuacoes
+    let soma = 0;
+    for(let i = 0; i < 4; i++){
+        soma += pontuacoes[i];
+    }
+    if(soma != 5){
+        resultado.innerHTML = `Responda todas as perguntas`;
+        return;
+    }
+
+    // Encontra o índice da categoria com maior pontuação
+    let maior = 0;
+    let indiceMaior = 0;
+    for (let i = 0; i < pontuacoes.length; i++) {
+      if (pontuacoes[i] > maior) {
+        maior = pontuacoes[i];
+        indiceMaior = i;
+      }
+    }
+
+    // Mensagens para cada categoria
+    const mensagens = [
+      "Seu hobbie ideal está relacionado a esportes e atividades físicas!",
+      "Seu hobbie ideal envolve desafios mentais e estratégicos!",
+      "Você se dá bem com artes e formas criativas de expressão!",
+      "Você valoriza o lazer e momentos relaxantes!"
+    ];
+
+    // Mostra o resultado final
+    resultado.innerHTML = `<p><strong>${mensagens[indiceMaior]}</strong></p>`;
+  }
+</script>
+
+
+
+
+</html>

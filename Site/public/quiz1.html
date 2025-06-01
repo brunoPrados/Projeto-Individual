@@ -9,34 +9,32 @@
   <title>Hobbies | Cadastro</title>
 <script src="./js/sessao.js"></script>
 
-  <link rel="stylesheet" href="./css/estilo.css" />
-  <link rel="icon" href="./assets/icon/Logo_Imagem-Sem_Fundo.ico">
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="stylesheet" href="./css/dashboards.css" />
 </head>
 
-<body onload="onloadEsconder()">
+<body>
     <div class="header">
         <div class="container">
             <h1 class="titulo">
                 <li>
-                    <a href="index.html">Hobbies & Bem-Estar</a>
+                    <a href="dashboard.html">Hobbies & Bem-Estar</a>
                 </li>
             </h1>
             <ul class="navbar">
                 <li>
-                    <a href="index.html">Inicial</a>
+                    <a href="dashboard.html">Meus Resultados</a>
+                </li>
+                <li>
+                    <a href="quiz2.html">Quiz Personalidade</a>
                 </li>
                 <li class="agora">
-                    <a href="simulador.html">Quiz</a>
-                </li>
-                <li>
-                    <a href="sobremim.html">Sobre Mim</a>
-                </li>
-                <li>
-                    <a href="login.html">Login</a>
+                    <a href="quiz1.html">Quiz Conhecimento</a>
                 </li>
             </ul>
         </div>
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
     </div>
     <div id="pontuacaoEJogo">
         <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
