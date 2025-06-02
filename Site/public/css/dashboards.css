@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #b0e1a8;
+  background-color:#e2ece0;
   color: #333;
   display: flex;
   margin: 0;
@@ -29,7 +29,7 @@ body {
 }
 
 .header .titulo a {
-  color: white;
+  color: #e2ece0;
   text-decoration: none;
   font-weight: bold;
 }
@@ -44,7 +44,7 @@ body {
 }
 
 .header .navbar li a {
-  color: white;
+  color: #e2ece0;
   text-decoration: none;
   font-weight: bold;
 }
@@ -54,7 +54,7 @@ body {
 }
 
 .header .navbar .agora a {
-  border-left: 3px solid white;
+  border-left: 3px solid #e2ece0;
   padding-left: 8px;
 }
 
@@ -69,7 +69,7 @@ body {
 
 .btn-logout h3 {
   font-size: 16px;
-  color: white;
+  color: #e2ece0;
 }
 
 /* Container do quiz com espaço à esquerda */

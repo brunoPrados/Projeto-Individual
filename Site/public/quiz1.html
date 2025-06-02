@@ -8,7 +8,7 @@
 
     <title>Hobbies | Conhecimento</title>
     <script src="./js/sessao.js"></script>
-
+    <link rel="icon" href="./assets/icon/Logo_Imagem-Sem_Fundo.ico">
     <link rel="stylesheet" href="./css/dashboards.css" />
 </head>
 
@@ -186,7 +186,24 @@
       <h2>Você acertou ${acertos} de ${perguntas.length} perguntas!</h2>
       <button class="btn" onclick="iniciarQuiz()">Recomeçar</button>
     `;
-    }
+
+    console.log("ID do usuário:", sessionStorage.ID_USUARIO);
+    console.log("Pontuação:", acertos);
+    
+    fetch("/quiz/cadastrar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/quiz.js
+            idUsuario: sessionStorage.ID_USUARIO,
+            pontuacao: acertos
+        }),
+        
+    })
+}
 </script>
 
 </html>

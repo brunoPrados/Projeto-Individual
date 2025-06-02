@@ -8,7 +8,7 @@
 
     <title>Hobbies | Personalidade</title>
     <script src="./js/sessao.js"></script>
-
+    <link rel="icon" href="./assets/icon/Logo_Imagem-Sem_Fundo.ico">
     <link rel="stylesheet" href="./css/dashboards.css" />
 </head>
 
@@ -128,6 +128,7 @@
         indiceMaior = i;
       }
     }
+    console.log(indiceMaior);
 
     // Mensagens para cada categoria
     const mensagens = [
@@ -139,6 +140,25 @@
 
     // Mostra o resultado final
     resultado.innerHTML = `<p><strong>${mensagens[indiceMaior]}</strong></p>`;
+
+    const ListaHobbie = ['Esportes e Atividades Físicas', 'Desafios Mentais', 'Artistico e Criativo', 'Lazer e Descanso'];
+
+    const hobbieResultado = ListaHobbie[indiceMaior];
+    console.log(hobbieResultado)
+
+    fetch("/quiz2/cadastrar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/quiz.js
+            idUsuario: sessionStorage.ID_USUARIO,
+            hobbie: hobbieResultado
+        }),
+        
+    })
   }
 </script>
 
