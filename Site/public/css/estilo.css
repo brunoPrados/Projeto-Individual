@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Ancizar+Serif:ital,wght@0,300..900;1,300..900&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
 body {
   margin: 0;
   padding: 0;
@@ -8,11 +11,11 @@ body {
 }
 
 /* INDEX */
+/* NAVBAR */
 
 .header {
   height: 80px;
   background-color: #333;
-  border-bottom: 2px solid #000;
 }
 
 .header .container {
@@ -74,34 +77,41 @@ ul {
   background-color: #396348;
 }
 
-/* NAVBAR */
-
+/* BANNER */
 .banner {
   height: 400px;
-  background-image: url(../assets/background.jpg);
+  background-image: url(../assets/Boxe-Background-photo.jpg);
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  font-size: 60px;
+  padding-right: 30px;
 }
 
 .banner .container {
-  padding-bottom: 200px;
+  max-width: 480px;
 }
 
 .banner p {
-  font-size: 28px;
   color: white;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 20px;
-  border-radius: 10px;
+  padding: 25px 0px 25px 0px;
+  line-height: 1.5;
+  font-weight: 400;
+  font-family: "Barlow", sans-serif;
+  font-style: normal;
+  margin-left: 50px;
 }
 
 .banner span {
   color: #18cf5b;
-  font-weight: bold;
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-style: normal;
 }
+
+
 
 /* APRESENTAÇÃO */
 
@@ -149,6 +159,7 @@ ul {
 .social {
   background-color: white;
   padding: 40px 0;
+  width: 100%;
 }
 
 .social .container {
@@ -156,6 +167,24 @@ ul {
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+}
+
+.social .titulo {
+  justify-self: center;
+  width: fit-content;
+  margin-bottom: 25px;
+}
+
+.social .titulo h2 {
+  font-size: 38px;
+  color: #333;
+  margin-bottom: 0px;
+  display: inline-block;
+}
+
+.social .titulo .border {
+  border-bottom: 2px solid #18cf5b; 
+
 }
 
 .boxes {
@@ -175,7 +204,6 @@ ul {
   text-align: center;
   transition: 0.2s ease;
 }
-
 
 .box img {
   width: 100%;
@@ -215,6 +243,8 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 
 .footer h4 {
@@ -224,57 +254,66 @@ ul {
 
 /* HOBBIES */
 .container-filho {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #ffffff;
 }
 
 .caixa {
-  display: flex;
-  align-items: center;
-  background-color: #fff;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
   overflow: hidden;
+  text-align: center;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .caixa img {
-  width: 200px;
-  height: 150px;
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  max-height: 400px;
   object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
 
 .texto {
-  padding: 20px;
+  width: 100%;
 }
 
 .texto h2 {
-  margin: 0 0 10px;
+  font-size: 26px;
   color: #333;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #18cf5b;
+  display: inline-block;
+  padding-bottom: 5px;
 }
 
 .texto p {
+  font-size: 16px;
+  color: #444;
+  text-align: justify;
+  line-height: 1.8;
   margin: 0;
-  color: #666;
 }
 
-.caixa:nth-child(odd) {
-  flex-direction: row-reverse;
-}
-
-.caixa .texto {
-  flex: 1;
-  text-align: left;
+.imagem-lateral {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 20px 30px;
+  gap: 20px;
+  align-items: flex-start;
+  margin: 20px 0;
 }
 
-.caixa:nth-child(odd) {
-  flex-direction: row-reverse;
-  justify-content: space-between;
+.imagem-lateral img {
+  width: 300px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 2px;
+  flex-shrink: 0;
 }
 
 /* SOBRE MIM */
