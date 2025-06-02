@@ -1,10 +1,8 @@
-/* Layout principal */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f0f4f8;
+  font-family: Arial, sans-serif;
+  background-color: #b0e1a8;
   color: #333;
   display: flex;
-  min-height: 100vh;
   margin: 0;
 }
 
@@ -76,7 +74,7 @@ body {
 
 /* Container do quiz com espaço à esquerda */
 .quiz-container {
-  margin-left: 260px;
+  margin-left: 460px;
   margin-top: 40px;
   padding: 30px 40px;
   max-width: 700px;
@@ -88,7 +86,7 @@ body {
 .quiz-container h1 {
   text-align: center;
   margin-bottom: 30px;
-  color: #4a90e2;
+  color: #000000;
 }
 
 /* Perguntas */
@@ -114,7 +112,7 @@ body {
 button {
   display: block;
   width: 100%;
-  background-color: #4a90e2;
+  background-color:#396348;
   color: white;
   border: none;
   padding: 15px;
@@ -126,7 +124,7 @@ button {
 }
 
 button:hover {
-  background-color: #357ABD;
+  background-color: #1c3d28;
 }
 
 /* Resultado */
@@ -136,3 +134,59 @@ button:hover {
   text-align: center;
   color: #2c3e50;
 }
+
+/* QUIZ 1 */
+.container-quiz {
+      background: white;
+      padding: 30px;
+      margin: 120px 0px 0px 500px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .container-quiz h1 {
+      margin-bottom: 20px;
+      color: #000000;
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    .alternatives label {
+      display: block;
+      margin: 10px 0;
+      background: #ececec;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .alternatives label:hover {
+      background: #d5d5d5;
+    }
+
+    .botao {
+      background-color: #396348;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .botao:hover {
+       background-color: #1c3d28;
+    }
+
+    #resultado-quiz {
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 20px;
+    }
