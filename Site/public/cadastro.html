@@ -9,7 +9,7 @@
   <title>Hobbies | Cadastro</title>
 
   <script src="./js/sessao.js"></script>
-    <link rel="icon" href="./assets/icon/Logo_Imagem-Sem_Fundo.ico">
+  <link rel="icon" href="./assets/icon/Logo_Imagem-Sem_Fundo.ico">
   <link rel="stylesheet" href="./css/estilo.css" />
 </head>
 
@@ -86,10 +86,6 @@
           <div id="div_outro"></div>
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
-        <div id="div_aguardar" class="loading-div">
-          <img src="./assets/circle-loading.gif" id="loading-gif" />
-        </div>
-
         <div id="div_erros_login"></div>
       </div>
     </div>
@@ -108,22 +104,22 @@
 
 <script>
 
-  function Outro(){
+  function Outro() {
     let hobbieVar = hobbie_input.value;
-    if(hobbieVar == 'outro'){
+    if (hobbieVar == 'outro') {
       div_outro.innerHTML = `
       <div class="campo">
             <span>Escreva Seu Hobbie:</span>
             <input type="text" id="hobbieoutro_input" placeholder="Seu Hobbie">
           </div>
       `
-    } else{
+    } else {
       div_outro.innerHTML = ``;
     }
   }
 
   function cadastrar() {
-    
+
     // aguardar();
 
     //Recupere o valor da nova input pelo nome do id
@@ -133,11 +129,13 @@
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
     var hobbieVar = hobbie_input.value;
-    var outrohobbieVar = hobbieoutro_input.value;
 
     // Verificando Hobbie
-    if(hobbieVar == 'outro') hobbieVar = outrohobbieVar;
+    if (hobbieVar == 'outro') {
+      var outrohobbieVar = hobbieoutro_input.value;
 
+      hobbieVar = outrohobbieVar;
+    }
     // Verificando se há algum campo em branco
     if (
       nomeVar == "" ||
@@ -157,7 +155,7 @@
     }
 
     // Verificando valores dos campos obrigatórios
-    if(nomeVar.length <= 1){
+    if (nomeVar.length <= 1) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
         "(Mensagem de erro para nome com menos de 2 letras)";
@@ -167,7 +165,7 @@
     } else {
       setTimeout(sumirMensagem, 5000);
     }
-     if(hobbieVar == '#'){
+    if (hobbieVar == '#') {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
         "(Escolha um hobbie)";
@@ -177,7 +175,7 @@
     } else {
       setTimeout(sumirMensagem, 5000);
     }
-    if(emailVar.indexOf("@") == -1){
+    if (emailVar.indexOf("@") == -1) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
         "(Mensagem de erro para email não possuir @)";
@@ -187,7 +185,7 @@
     } else {
       setTimeout(sumirMensagem, 5000);
     }
-    if(senhaVar.length <= 6){
+    if (senhaVar.length <= 6) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
         "(Mensagem de erro para senha com menos de 7 caracteres)";
@@ -197,7 +195,7 @@
     } else {
       setTimeout(sumirMensagem, 5000);
     }
-    if(confirmacaoSenhaVar != senhaVar){
+    if (confirmacaoSenhaVar != senhaVar) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
         "(Mensagem de erro para senhas não compatíveis)";
@@ -256,7 +254,7 @@
   }
 
   function finalizarAguardar() {
-  div_aguardar.style.display = "none";
-}
+    div_aguardar.style.display = "none";
+  }
 
 </script>

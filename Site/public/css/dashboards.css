@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color:#e2ece0;
+  background-color: #e2ece0;
   color: #333;
   display: flex;
   margin: 0;
@@ -63,6 +63,7 @@ body {
   cursor: pointer;
   margin-top: 40px;
 }
+
 .btn-logout:hover {
   opacity: 0.8;
 }
@@ -112,7 +113,7 @@ body {
 button {
   display: block;
   width: 100%;
-  background-color:#396348;
+  background-color: #396348;
   color: white;
   border: none;
   padding: 15px;
@@ -137,56 +138,83 @@ button:hover {
 
 /* QUIZ 1 */
 .container-quiz {
-      background: white;
-      padding: 30px;
-      margin: 120px 0px 0px 500px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: 90%;
-      max-width: 500px;
-      text-align: center;
-    }
+  background: white;
+  padding: 30px;
+  margin: 120px 0px 0px 500px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+}
 
-    .container-quiz h1 {
-      margin-bottom: 20px;
-      color: #000000;
-    }
+.container-quiz h1 {
+  margin-bottom: 20px;
+  color: #000000;
+}
 
-    .question {
-      margin-bottom: 20px;
-    }
+.question {
+  margin-bottom: 20px;
+}
 
-    .alternatives label {
-      display: block;
-      margin: 10px 0;
-      background: #ececec;
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
+.alternatives label {
+  display: block;
+  margin: 10px 0;
+  background: #ececec;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
 
-    .alternatives label:hover {
-      background: #d5d5d5;
-    }
+.alternatives label:hover {
+  background: #d5d5d5;
+}
 
-    .botao {
-      background-color: #396348;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
+.botao {
+  background-color: #396348;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
 
-    .botao:hover {
-       background-color: #1c3d28;
-    }
+.botao:hover {
+  background-color: #1c3d28;
+}
 
-    #resultado-quiz {
-      font-weight: bold;
-      font-size: 18px;
-      margin-top: 20px;
-    }
+#resultado-quiz {
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+/* DASHBOARD */
+.dashboard-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+  margin-left: 300px;
+}
+
+.dashboard-box {
+  flex: 1 1 300px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  margin: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-box h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+canvas {
+  max-width: 100%;
+}
