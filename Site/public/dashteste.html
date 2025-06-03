@@ -1,169 +1,137 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dashboard de Hobbies</title>
-  <style>
-    * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard de Hobbies</title>
+    <style>
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #eefaf2;
-  color: white;
-}
-
-.container {
-  padding: 20px;
-}
-
-.top-bar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.top-bar img {
-  width: 32px;
-  height: 32px;
+    margin: 0;
+    background-color: #e6efe4;
+    font-family: Arial, sans-serif;
 }
 
 .dashboard {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto auto;
-  gap: 20px;
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    align-items: stretch;
+}
+
+.container-esquerda {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.container-esquerda-cima {
+    display: flex;
+    gap: 20px;
+}
+
+.container-esquerda-baixo {
+    display: flex;
+}
+
+.container-direita {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    background-color: #2f2f2f;
+    color: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .card {
-  background-color: #1e1e1e;
-  border-radius: 20px;
-  padding: 20px;
-}
-
-.card h3 {
-  margin-bottom: 10px;
-  font-size: 1.1em;
-}
-
-.nota-valor {
-  font-size: 40px;
-  font-weight: bold;
-  margin: 10px 0;
-}
-
-.hobbie-item {
-  background-color: #e8f2f0;
-  color: black;
-  padding: 10px;
-  border-radius: 999px;
-  margin: 6px 0;
-  text-align: center;
-  font-weight: bold;
-}
-
-.recomendado h2 {
-  margin: 10px 0;
-}
-
-.recomendado img {
-  width: 100%;
-  border-radius: 10px;
-  margin: 10px 0;
+    background-color: #2f2f2f;
+    color: white;
+    border-radius: 20px;
+    padding: 20px;
+    flex: 1;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .distribuicao-conteudo {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.distribuicao ul {
-  list-style: none;
+ul {
+    padding-left: 20px;
 }
 
-.distribuicao ul li {
-  margin: 6px 0;
-  font-size: 0.95em;
+.hobbie-item {
+    margin-top: 5px;
 }
 
-.grafico-placeholder {
-  width: 180px;
-  height: 180px;
+.nota-valor {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 10px 0;
 }
 
-  </style>
+    </style>
 </head>
+
 <body>
-  <div class="container">
-    <header class="top-bar">
-      <img src="https://img.icons8.com/ios-filled/50/user.png" alt="user icon" />
-      <h2>Olá Bruno</h2>
-    </header>
+    <div class="container">
+        <header class="top-bar">
+            <img src="https://img.icons8.com/ios-filled/50/user.png" alt="user icon" />
+            <h2>Olá Bruno</h2>
+        </header>
 
-    <main class="dashboard">
-      <div class="card nota">
-        <h3>Maior Nota Quiz Conhecimento</h3>
-        <div class="nota-valor">10</div>
-        <p>Você tem um conhecimento<br>avançado sobre hobbies</p>
-      </div>
+        <div class="dashboard">
+            <div class="container-esquerda">
+                <div class="container-esquerda-cima">
+                    <div class="card">
+                        <h3>Maior Nota Quiz Conhecimento</h3>
+                        <div class="nota-valor">10</div>
+                        <p>Você tem um conhecimento<br>avançado sobre hobbies</p>
+                    </div>
 
-      <div class="card ranking">
-        <h3>Ranking dos Hobbies Mais Praticados</h3>
-        <div class="hobbie-item">1 - Skate</div>
-        <div class="hobbie-item">2 - Mágica</div>
-        <div class="hobbie-item">3 - Escalada</div>
-      </div>
+                    <div class="card">
+                        <h3>Ranking dos Hobbies Mais Praticados</h3>
+                        <div class="hobbie-item">1 - Skate</div>
+                        <div class="hobbie-item">2 - Mágica</div>
+                        <div class="hobbie-item">3 - Escalada</div>
+                    </div>
+                </div>
 
-      <div class="card recomendado">
-        <h3>Hobbie Recomendado</h3>
-        <h2>Artístico e Criativo</h2>
-        <img src="./assets/imgs/arte.jpg" alt="arte recomendada">
-        <p>Segundo os resultados do quiz de personalidade, o tipo de hobbie que te recomendo é algo que envolva arte e o desenvolvimento criativo.</p>
-      </div>
+                <div class="container-esquerda-baixo">
+                    <div class="card">
+                        <h3>Distribuição de Hobbies</h3>
+                        <div class="distribuicao-conteudo">
+                            <ul>
+                                <li>Escalada</li>
+                                <li>Beach Tennis</li>
+                                <li>Cubo Mágico</li>
+                                <li>Xadrez</li>
+                                <li>Boxe</li>
+                            </ul>
+                            <div class="grafico-placeholder">
+                                <canvas id="graficoHobbies" width="180" height="180"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-      <div class="card distribuicao">
-        <h3>Distribuição de Hobbies</h3>
-        <div class="distribuicao-conteudo">
-          <ul>
-            <li>Escalada</li>
-            <li>Beach Tennis</li>
-            <li>Cubo Mágico</li>
-            <li>Xadrez</li>
-            <li>Boxe</li>
-          </ul>
-          <div class="grafico-placeholder">
-            <canvas id="graficoHobbies" width="180" height="180"></canvas>
-          </div>
+            <div class="container-direita card">
+                <h3>Hobbie Recomendado</h3>
+                <h2>Artístico e Criativo</h2>
+                <p>Segundo os resultados do quiz de personalidade, o tipo de hobbie que te recomendo é algo que
+                    envolva arte e o desenvolvimento criativo.</p>
+            </div>
         </div>
-      </div>
-    </main>
-  </div>
 
-  <!-- Chart.js para o gráfico -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    const ctx = document.getElementById('graficoHobbies').getContext('2d');
-    new Chart(ctx, {
-      type: 'pie',
-      data: {
-        labels: ['Escalada', 'Beach Tennis', 'Cubo Mágico', 'Xadrez', 'Boxe'],
-        datasets: [{
-          data: [62.8, 28, 12.2, 10, 8],
-          backgroundColor: ['#70e0ff', '#47c5e0', '#2aa6c2', '#1b869e', '#145f6e']
-        }]
-      },
-      options: {
-        plugins: {
-          legend: { display: false }
-        }
-      }
-    });
-  </script>
+    </div>
 </body>
+
 </html>

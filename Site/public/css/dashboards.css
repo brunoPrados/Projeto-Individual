@@ -193,33 +193,64 @@ button:hover {
 }
 
 /* DASHBOARD */
-.dashboard-container {
+
+.dashboard {
   display: flex;
   gap: 30px;
   padding: 40px;
   margin-left: 300px;
+  align-items: flex-start;
 }
 
+/* Coluna esquerda */
+.container-esquerda {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Linha com 2 caixas lado a lado */
+.container-esquerda-cima {
+  display: flex;
+  gap: 20px;
+}
+
+/* Força cada box da linha a ocupar metade da largura */
+.container-esquerda-cima .dashboard-box {
+  flex: 1;
+}
+
+/* Coluna direita */
+.container-direita {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+/* Estilização geral dos boxes */
 .dashboard-box {
   background-color: white;
-  width: 200px;
-  height: 400px;
-  padding: 25px;
+  width: 100%;
+  padding: 10px 25px 10px 25px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   text-align: center;
+  box-sizing: border-box;
 }
 
 .dashboard-box h2 {
-  margin-bottom: 16px;
-  color: #33383e;
-  font-size: 20px;
-  border-bottom: 1px solid #e0e0e0;
-  padding-bottom: 8px;
+  margin: 0;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 25px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #396348;
 }
 
-.dashboard-box #resultadoQuery1,
-.dashboard-box #resultadoQuery2,
+/* Resultados dos quizzes */
 .dashboard-box #resultadoQuery3 {
   font-size: 22px;
   font-weight: bold;
@@ -227,20 +258,43 @@ button:hover {
   margin-top: 12px;
 }
 
+#resultadoQuery2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #24282b;
+  margin-top: 12px;
+}
+
+.dashboard-box #resultadoQuery1 {
+  font-size: 30px;
+  font-weight: bold;
+  color: #24282b;
+  margin-top: 8px;
+}
+
+/* Estilo para itens de hobbie */
 .hobbie-item {
   background-color: #e8efe7;
   border-radius: 8px;
   padding: 10px 15px;
   margin: 8px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
 }
 
 .hobbie-item p {
   font-weight: bold;
 }
 
+/* Gráfico responsivo */
 canvas {
   width: 100%;
   height: auto;
 }
 
+#div_personalidade p {
+  text-align: left;
+}
+
+.div_grafico h2 {
+  margin-bottom: 60px;
+}

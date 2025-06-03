@@ -37,30 +37,34 @@
             <h3>Sair</h3>
         </div>
     </div>
-    <div class="dashboard-container">
-        <div class="dashboard-box">
-            <h2>Sua Maior Nota no Quiz Conhecimento</h2>
-            <div id="resultadoQuery1">Responda o Quiz Conhecimento para conferir seus resultados</div>
-        </div>
+    <div class="dashboard">
+        <div class="container-esquerda">
+            <div class="container-esquerda-cima">
+                <div class="dashboard-box">
+                    <h2>Resultado Personalidade</h2>
+                    <div id="resultadoQuery2">Responda o Quiz de Personalidade para conferir seus resultados</div>
+                    <div id="div_personalidade"></div>
+                </div>
 
-        <div class="dashboard-box">
-            <h2>Sua Personalidade</h2>
-            <div id="resultadoQuery2">Responda o Quiz de Personalidade para conferir seus resultados</div>
-            <div id="div_personalidade">
+                <div class="dashboard-box div_grafico">
+                    <h2>Gráfico de Distribuição de Hobbies</h2>
+                    <canvas id="myChartCanvas1"></canvas>
+                </div>
+            </div>
+
+            <div class="dashboard-box">
+                <h2>Sua Maior Nota no Quiz Conhecimento</h2>
+                <div id="resultadoQuery1">Responda o Quiz Conhecimento para conferir seus resultados</div>
+                <div id="div_nota"></div>
             </div>
         </div>
-
-        <div class="dashboard-box">
-            <h2>Ranking dos Hobbies mais Praticados</h2>
+        <div class="container-direita dashboard-box">
+            <h2>Ranking dos Hobbies Mais Praticados</h2>
             <div id="resultadoQuery3">Carregando...</div>
             <div id="div_ranking"></div>
         </div>
-
-        <div class="dashboard-box">
-            <h2>Distribuição de Preferências</h2>
-            <canvas id="myChartCanvas1"></canvas>
-        </div>
     </div>
+
 
 
 
@@ -70,17 +74,7 @@
 
 <script>
     const idUsuario = sessionStorage.ID_USUARIO;
-    // O gráfico é construído com três funções:
-    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
-    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
-    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
 
-    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
-    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
-    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
-
-    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    //     Para ajustar o "select", ajuste o comando sql em src/models
     function obterDadosGrafico() {
         let idGrafico = 1;
         console.log(idGrafico);
@@ -115,12 +109,14 @@
 
         // Criando estrutura para plotar gráfico - dados
         let legenda = 'Quantidade';
-        let coresGraficoDiffBarra = ['rgb(128, 0, 32)',
-            'rgb(204, 0, 0)',
-            'rgb(255, 102, 102)',
-            'rgb(51, 51, 51)',
-            'rgb(160, 160, 160)',
-            'rgb(240, 240, 240)'];
+        let coresGraficoDiffBarra = [
+            '#4CAF50',
+            '#81C784',
+            '#A5D6A7',
+            '#B0BEC5',
+            '#CFD8DC',
+            '#ECEFF1'
+        ];
         let coresGraficoBarra = ['rgb(204, 0, 0)'];
         let coresGrafico = [];
         if (idGrafico == 1) {
@@ -135,7 +131,8 @@
                 backgroundColor: coresGrafico,
                 barThickness: 110,
                 borderColor: 'rgb(0, 0, 0)',
-                borderWidth: 4
+                borderWidth: 2,
+                hoverOffset: 5
             }]
         };
 
@@ -169,10 +166,16 @@
         const config = {
             type: tipoGrafico,
             data: dados,
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                }
+            }
         };
 
         Chart.defaults.color = '#000';
-        // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
             document.getElementById(`myChartCanvas${idGrafico}`),
             config
@@ -213,6 +216,23 @@
                 var registro = resposta[i];
                 mensagem.push(registro.Pontuacao);
             }
+            if (registro.Pontuacao < 5) {
+                div_nota.innerHTML = `
+                    <p>Pontuação baixa. É importante revisar melhor o conteúdo do site.</p>
+                `;
+            } else if (registro.Pontuacao < 8) {
+                div_nota.innerHTML = `
+                    <p>Pontuação razoável. Ainda há pontos a melhorar na sua compreensão.</p>
+                `;
+            } else if (registro.Pontuacao < 10) {
+                div_nota.innerHTML = `
+                    <p>Boa pontuação! Você está quase dominando o conteúdo.</p>
+                `;
+            } else {
+                div_nota.innerHTML = `
+                    <p>Excelente! Você mostrou total domínio do conteúdo!</p>
+                `;
+            }
         } else if (idIndicador == 2) {
             for (let i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
@@ -220,35 +240,36 @@
             }
             if (registro.hobbie == 'Esportes e Atividades Físicas') {
                 div_personalidade.innerHTML = `<br>
-                <img src="./assets/imgs/esporte.jpg" alt="" width="80%" height="70%">
-                <p>Sua personalidade faz com que voce seja especialmente unico</p>
+                <img src="./assets/imgs/esporte.jpg" alt="" width="90%" height="80%">
+                <p>Segundo os resultados do quiz de personalidade, o tipo de hobbie que te recomendo é algo que envolva movimento e energia, como praticar esportes, dançar ou fazer exercícios físicos.</p>
                 `
             } if (registro.hobbie == 'Desafios Mentais') {
                 div_personalidade.innerHTML = `<br>
-                <img src="./assets/imgs/desafio.jpg" alt="" width="80%" height="70%">
-                <p>Sua personalidade faz com que voce seja especialmente unico</p>
+                <img src="./assets/imgs/desafio.jpg" alt="" width="90%" height="80%">
+                <p>Segundo os resultados do quiz de personalidade, o tipo de hobbie que te recomendo é algo que estimule o raciocínio lógico e a resolução de problemas, como jogos de estratégia ou quebra-cabeças.</p>
                 `
             } if (registro.hobbie == 'Lazer e Descanso') {
                 div_personalidade.innerHTML = `<br>
-                <img src="./assets/imgs/lazer.jpg" alt="" width="80%" height="70%">
-                <p>Sua personalidade faz com que voce seja especialmente unico</p>
+                <img src="./assets/imgs/lazer.jpg" alt="" width="90%" height="80%">
+                <p>Segundo os resultados do quiz de personalidade, o tipo de hobbie que te recomendo é algo voltado para o relaxamento e o bem-estar, como leitura, meditação ou assistir filmes.</p>
                 `
-            } if (registro.hobbie == 'Artístico e Criativo') {
+            } if (registro.hobbie == 'Artistico e Criativo') {
                 div_personalidade.innerHTML = `<br>
-                <img src="./assets/imgs/arte.jpg" alt="" width="80%" height="70%">
-                <p>Sua personalidade faz com que voce seja especialmente unico</p>
+                <img src="./assets/imgs/arte.jpg" alt="" width="90%" height="80%">
+                <p>Segundo os resultados do quiz de personalidade, o tipo de hobbie que te recomendo é algo que envolva arte e o desenvolvimento criativo, como pintura, desenho, escrita ou música.</p>
                 `
             }
         } else if (idIndicador == 3) {
             let html = '';
-            for (let i = 0; i < resposta.length; i++) {
-                var registro = resposta[i];
-                html += `<div class="hobbie-item">
-                            <p>${i + 1}º - ${registro.ranking_hobbie}</p>
-                        </div>`;
+            for (let i = resposta.length - 1; i >= 0; i--) {
+                let posicao = resposta.length - i;
+                let registro = resposta[i];
+                html += `
+                    <div class="hobbie-item">
+                        <p>${posicao}º - ${registro.ranking_hobbie}</p>
+                    </div>`;
             }
             div_ranking.innerHTML = html;
-            document.getElementById(`resultadoQuery${idIndicador}`).innerHTML = html;
         }
 
         console.log('----------------------------------------------');

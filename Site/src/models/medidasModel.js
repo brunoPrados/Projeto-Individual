@@ -39,7 +39,7 @@ function buscarMedidasEmTempoReal(idIndicador, idUsuario) {
         FROM Cliente
         GROUP BY Hobbie
         ORDER BY quantidade DESC
-        LIMIT 4;
+        LIMIT 6;
         `;
     }
 
