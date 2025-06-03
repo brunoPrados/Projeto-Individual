@@ -86,6 +86,8 @@
           <div id="div_outro"></div>
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
+        <div id="div_aguardar" class="loading-div">
+                </div>
         <div id="div_erros_login"></div>
       </div>
     </div>
@@ -120,7 +122,7 @@
 
   function cadastrar() {
 
-    // aguardar();
+    aguardar();
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
@@ -146,65 +148,58 @@
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+        "Campos em Branco";
 
       finalizarAguardar();
-      return false;
-    } else {
       setTimeout(sumirMensagem, 5000);
-    }
-
+      return false;
+    } 
     // Verificando valores dos campos obrigatórios
     if (nomeVar.length <= 1) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Mensagem de erro para nome com menos de 2 letras)";
+        "Nome com menos de 2 letras";
 
       finalizarAguardar();
-      return false;
-    } else {
       setTimeout(sumirMensagem, 5000);
-    }
+      return false;
+    } 
     if (hobbieVar == '#') {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Escolha um hobbie)";
+        "Escolha um hobbie";
 
       finalizarAguardar();
-      return false;
-    } else {
       setTimeout(sumirMensagem, 5000);
+      return false;
     }
     if (emailVar.indexOf("@") == -1) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Mensagem de erro para email não possuir @)";
+        "Email não possuir @";
 
       finalizarAguardar();
-      return false;
-    } else {
       setTimeout(sumirMensagem, 5000);
-    }
+      return false;
+    } 
     if (senhaVar.length <= 6) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Mensagem de erro para senha com menos de 7 caracteres)";
+        "Senha com menos de 7 caracteres";
 
       finalizarAguardar();
-      return false;
-    } else {
       setTimeout(sumirMensagem, 5000);
-    }
+      return false;
+    } 
     if (confirmacaoSenhaVar != senhaVar) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Mensagem de erro para senhas não compatíveis)";
+        "Senhas não compatíveis";
 
       finalizarAguardar();
-      return false;
-    } else {
       setTimeout(sumirMensagem, 5000);
-    }
+      return false;
+    } 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
       method: "POST",

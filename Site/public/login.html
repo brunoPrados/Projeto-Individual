@@ -69,7 +69,6 @@
                 </div>
 
                 <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
                 </div>
 
                 <div id="div_erros_login"></div>
@@ -77,13 +76,11 @@
         </div>
     </div>
 
-    <!--footer inicio-->
     <div class="footer">
         <div class="container">
             <h4>Feito pelo aluno Bruno Prado</h4>
         </div>
     </div>
-    <!--footer fim-->
 
 </body>
 
@@ -100,12 +97,10 @@
 
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            mensagem_erro.innerHTML = "Campos em branco";
             finalizarAguardar();
+            setTimeout(sumirMensagem, 4000)
             return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -125,6 +120,10 @@
 
             if (resposta.ok) {
                 console.log(resposta);
+                cardErro.style.display = "block";
+
+                mensagem_erro.innerHTML =
+                "Login realizado com sucesso! Redirecionando para tela da Dashboard e Quiz...";
 
                 resposta.json().then(json => {
                     console.log(json);
@@ -135,7 +134,7 @@
 
                     setTimeout(function () {
                         window.location = "./dashboard.html";
-                    }, 1000); // apenas para exibir o loading
+                    }, 3000); // apenas para exibir o loading
 
                 });
 

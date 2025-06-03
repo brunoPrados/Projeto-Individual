@@ -118,7 +118,6 @@ ul {
 .apresentacao {
   background-color: #ffffff;
   padding: 40px 0px;
-  border-top: 2px solid #ddd;
   border-bottom: 2px solid #ddd;
 }
 
@@ -358,6 +357,7 @@ ul {
   justify-content: center;
   align-items: center;
   min-height: 70px;
+  position: relative;
 }
 
 .login .container {
@@ -432,30 +432,27 @@ ul {
 }
 
 .alerta_erro {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
 }
 
 .card_erro {
   display: none;
   background-color: #ffc2c2;
   color: #a10000;
-  padding: 10px;
+  padding: 10px 20px;
   border: 1px solid #a10000;
   border-radius: 5px;
-  width: 100%;
+  width: auto;
+  max-width: 400px;
   text-align: center;
-}
-
-.loading-div {
-  display: none;
-  margin-top: 20px;
-}
-
-.loading-div img {
-  width: 40px;
-  height: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 #div_erros_login {

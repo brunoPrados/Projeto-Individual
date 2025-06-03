@@ -39,18 +39,21 @@
     </div>
     <div class="dashboard-container">
         <div class="dashboard-box">
-            <h2>Sua Nota no Quiz</h2>
-            <div id="resultadoQuery1">Carregando...</div>
+            <h2>Sua Maior Nota no Quiz Conhecimento</h2>
+            <div id="resultadoQuery1">Responda o Quiz Conhecimento para conferir seus resultados</div>
         </div>
 
         <div class="dashboard-box">
             <h2>Sua Personalidade</h2>
-            <div id="resultadoQuery2">Carregando...</div>
+            <div id="resultadoQuery2">Responda o Quiz de Personalidade para conferir seus resultados</div>
+            <div id="div_personalidade">
+            </div>
         </div>
 
         <div class="dashboard-box">
-            <h2>Mesmos Hobbies</h2>
+            <h2>Ranking dos Hobbies mais Praticados</h2>
             <div id="resultadoQuery3">Carregando...</div>
+            <div id="div_ranking"></div>
         </div>
 
         <div class="dashboard-box">
@@ -208,18 +211,44 @@
         if (idIndicador == 1) {
             for (let i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
-                mensagem.push(registro.Pontuacao); // CORRETO
+                mensagem.push(registro.Pontuacao);
             }
         } else if (idIndicador == 2) {
             for (let i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
-                mensagem.push(registro.hobbie); // CORRETO
+                mensagem.push(registro.hobbie);
+            }
+            if (registro.hobbie == 'Esportes e Atividades Físicas') {
+                div_personalidade.innerHTML = `<br>
+                <img src="./assets/imgs/esporte.jpg" alt="" width="80%" height="70%">
+                <p>Sua personalidade faz com que voce seja especialmente unico</p>
+                `
+            } if (registro.hobbie == 'Desafios Mentais') {
+                div_personalidade.innerHTML = `<br>
+                <img src="./assets/imgs/desafio.jpg" alt="" width="80%" height="70%">
+                <p>Sua personalidade faz com que voce seja especialmente unico</p>
+                `
+            } if (registro.hobbie == 'Lazer e Descanso') {
+                div_personalidade.innerHTML = `<br>
+                <img src="./assets/imgs/lazer.jpg" alt="" width="80%" height="70%">
+                <p>Sua personalidade faz com que voce seja especialmente unico</p>
+                `
+            } if (registro.hobbie == 'Artístico e Criativo') {
+                div_personalidade.innerHTML = `<br>
+                <img src="./assets/imgs/arte.jpg" alt="" width="80%" height="70%">
+                <p>Sua personalidade faz com que voce seja especialmente unico</p>
+                `
             }
         } else if (idIndicador == 3) {
+            let html = '';
             for (let i = 0; i < resposta.length; i++) {
                 var registro = resposta[i];
-                mensagem.push(registro.quantidade_mesmo_hobbie); // CORRETO
+                html += `<div class="hobbie-item">
+                            <p>${i + 1}º - ${registro.ranking_hobbie}</p>
+                        </div>`;
             }
+            div_ranking.innerHTML = html;
+            document.getElementById(`resultadoQuery${idIndicador}`).innerHTML = html;
         }
 
         console.log('----------------------------------------------');

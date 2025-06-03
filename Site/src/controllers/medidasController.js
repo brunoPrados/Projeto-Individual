@@ -25,7 +25,6 @@ function buscarUltimasMedidas(req, res) {
 function buscarMedidasEmTempoReal(req, res) {
     var idIndicador = req.params.idIndicador;
 
-    // Captura o id do usuário da sessão ou query/body
     var idUsuario = req.query.idUsuario;
 
     if (!idUsuario) {

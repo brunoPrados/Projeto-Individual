@@ -1,6 +1,6 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idGrafico, limite_linhas) {
+function buscarUltimasMedidas(idGrafico) {
     if (idGrafico == 1) {
         var instrucaoSql = `SELECT 
         Hobbie,
@@ -17,7 +17,7 @@ function buscarMedidasEmTempoReal(idIndicador, idUsuario) {
 
     if (idIndicador == 1) {
         instrucaoSql = `
-            SELECT Pontuacao
+            SELECT MAX(Pontuacao) Pontuacao
             FROM ResultadoQuiz1
             WHERE fkCliente = ${idUsuario}
             ORDER BY idQuiz1 DESC
@@ -33,11 +33,13 @@ function buscarMedidasEmTempoReal(idIndicador, idUsuario) {
         `;
     } else if (idIndicador == 3) {
         instrucaoSql = `
-            SELECT COUNT(*) AS quantidade_mesmo_hobbie
-            FROM Cliente
-            WHERE Hobbie = (
-                SELECT Hobbie FROM Cliente WHERE idCliente = ${idUsuario}
-            );
+        SELECT 
+        Hobbie AS ranking_hobbie,
+        COUNT(*) AS quantidade
+        FROM Cliente
+        GROUP BY Hobbie
+        ORDER BY quantidade DESC
+        LIMIT 4;
         `;
     }
 
