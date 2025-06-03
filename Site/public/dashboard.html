@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Hobbies | Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./js/sessao.js"></script>
     <link rel="icon" href="./assets/icon/Logo_Imagem-Sem_Fundo.ico">
     <link rel="stylesheet" href="./css/dashboards.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
 
-<body>
+<body onload="obterDadosGrafico(), obterDadosIndicador()">
     <div class="header">
         <div class="container">
             <h1 class="titulo">
@@ -36,23 +37,28 @@
             <h3>Sair</h3>
         </div>
     </div>
-
     <div class="dashboard-container">
         <div class="dashboard-box">
             <h2>Sua Nota no Quiz</h2>
-            <p id="notaQuiz">Carregando...</p>
+            <div id="resultadoQuery1">Carregando...</div>
         </div>
 
         <div class="dashboard-box">
             <h2>Sua Personalidade</h2>
-            <p id="personalidade">Carregando...</p>
+            <div id="resultadoQuery2">Carregando...</div>
+        </div>
+
+        <div class="dashboard-box">
+            <h2>Mesmos Hobbies</h2>
+            <div id="resultadoQuery3">Carregando...</div>
         </div>
 
         <div class="dashboard-box">
             <h2>Distribuição de Preferências</h2>
-            <canvas id="graficoPizza"></canvas>
+            <canvas id="myChartCanvas1"></canvas>
         </div>
     </div>
+
 
 
 </body>
@@ -60,29 +66,170 @@
 </html>
 
 <script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    const idUsuario = sessionStorage.ID_USUARIO;
+    // O gráfico é construído com três funções:
+    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
 
-    // Exemplo de dados
-    document.getElementById("notaQuiz").innerText = sessionStorage.NOTA_QUIZ || "85%";
-    document.getElementById("personalidade").innerText = sessionStorage.PERFIL || "Aventureiro Criativo";
+    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
 
-    const ctx = document.getElementById('graficoPizza').getContext('2d');
-    const graficoPizza = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Esportes', 'Artes', 'Estratégia', 'Lazer'],
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+    function obterDadosGrafico() {
+        let idGrafico = 1;
+        console.log(idGrafico);
+        fetch(`/medidas/ultimas/${idGrafico}?idUsuario=${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta, idGrafico);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGrafico(resposta, idGrafico) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let legenda = 'Quantidade';
+        let coresGraficoDiffBarra = ['rgb(128, 0, 32)',
+            'rgb(204, 0, 0)',
+            'rgb(255, 102, 102)',
+            'rgb(51, 51, 51)',
+            'rgb(160, 160, 160)',
+            'rgb(240, 240, 240)'];
+        let coresGraficoBarra = ['rgb(204, 0, 0)'];
+        let coresGrafico = [];
+        if (idGrafico == 1) {
+            coresGrafico = coresGraficoDiffBarra;
+        }
+
+        let dados = {
+            labels: labels,
             datasets: [{
-                data: [25, 30, 20, 25], // Exemplo de valores
-                backgroundColor: ['#4e79a7', '#f28e2c', '#e15759', '#76b7b2']
+                label: legenda,
+                data: [],
+                backgroundColor: coresGrafico,
+                barThickness: 110,
+                borderColor: 'rgb(0, 0, 0)',
+                borderWidth: 4
             }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom'
-                }
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        if (idGrafico == 1) {
+            for (i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+                labels.push(registro.Hobbie);
+                dados.datasets[0].data.push(registro.total);
             }
         }
-    });
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        let tipoGrafico = 'bar';
+        if (idGrafico == 1) {
+            tipoGrafico = 'pie';
+        }
+
+        const config = {
+            type: tipoGrafico,
+            data: dados,
+        };
+
+        Chart.defaults.color = '#000';
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myChartCanvas${idGrafico}`),
+            config
+        );
+    }
+
+    function obterDadosIndicador() {
+        for (let idIndicador = 1; idIndicador <= 3; idIndicador++) {
+            console.log(idIndicador);
+            fetch(`/medidas/tempo-real/${idIndicador}?idUsuario=${idUsuario}`, { cache: 'no-store' }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        resposta.reverse();
+
+                        plotarIndicador(resposta, idIndicador);
+
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+                .catch(function (error) {
+                    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                });
+        }
+    }
+
+    function plotarIndicador(resposta, idIndicador) {
+        console.log('iniciando plotagem do indicador...');
+        console.log('----------------------------------------------');
+        console.log('Estes dados foram recebidos pela funcao "obterDadosIndicador" e passados para "plotarIndicador":');
+        console.log(resposta);
+
+        let mensagem = [];
+        if (idIndicador == 1) {
+            for (let i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+                mensagem.push(registro.Pontuacao); // CORRETO
+            }
+        } else if (idIndicador == 2) {
+            for (let i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+                mensagem.push(registro.hobbie); // CORRETO
+            }
+        } else if (idIndicador == 3) {
+            for (let i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+                mensagem.push(registro.quantidade_mesmo_hobbie); // CORRETO
+            }
+        }
+
+        console.log('----------------------------------------------');
+        console.log('O indicador será plotado com os respectivos valores:');
+        console.log('Valores:');
+        console.log(mensagem);
+        console.log('----------------------------------------------');
+
+        let div = document.getElementById(`resultadoQuery${idIndicador}`);
+        div.innerHTML = mensagem;
+    }
+
 </script>
