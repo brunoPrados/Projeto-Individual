@@ -216,7 +216,12 @@
                 var registro = resposta[i];
                 mensagem.push(registro.Pontuacao);
             }
-            if (registro.Pontuacao < 5) {
+            if (registro.Pontuacao <= 0){
+                div_nota.innerHTML = `
+                <p>Responda o Quiz de Conhecimento para conferir seus resultados</p>
+                `;
+            }
+            else if (registro.Pontuacao < 5) {
                 div_nota.innerHTML = `
                     <p>Pontuação baixa. É importante revisar melhor o conteúdo do site.</p>
                 `;
